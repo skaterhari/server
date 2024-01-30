@@ -9,7 +9,7 @@ require('dotenv').config(); // Load environmental variables from .env file
 
 const app = express();
 app.use(cors())
-const port = process.env.PORT || 4000;
+const port = process.env.PORT;
 
 // Connect to MongoDB Atlas using Mongoose
 mongoose.connect(process.env.MONGODB_URI);
@@ -50,6 +50,7 @@ const userSchema = new mongoose.Schema({
       }
     } catch (error) {
       console.error(error);
+      console.log(error)
       res.status(500).json({ error: 'Internal Server Error' });
     }
   });
